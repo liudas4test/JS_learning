@@ -1,1 +1,1 @@
-#JS_learning
+#JS_learning Objects and functions
