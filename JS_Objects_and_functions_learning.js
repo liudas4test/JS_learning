@@ -30,7 +30,7 @@ console.log(secondTestPerson.lastName);
 */
 
 //---------Object create--------
-
+/*
 var personProto = {
     calculateAge: function() {
         console.log(2017-this.yearOfBirth);
@@ -47,3 +47,42 @@ var x = Object.create(personProto, {
     yearOfBirth: {value: 1999},
     job: {value: 'student'}
 });
+*/
+
+//-55---primitives vs. objects---
+//Primitives
+var a = 23;
+var b = a;
+a = 46;
+console.log(a);
+console.log(b);
+
+//Objects
+
+var obj1 = {
+    name: 'name1',
+    age: 55
+};
+var obj2 = obj1;
+obj1.age = 33;
+console.log(obj1.age);
+console.log(obj2.age);
+
+//Functions
+
+var age = 22;
+var obj = {
+    name : 'name1',
+    city : 'Country'
+};
+
+function change(a,b){
+    a = 33;
+    obj.city = 'City';
+};
+
+change(age, obj);
+console.log(age);
+console.log(obj.city);
+
+
