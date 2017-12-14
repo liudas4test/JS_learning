@@ -154,7 +154,7 @@ interviewQuestion('driver')('Micius')('Tractor');
 */
 
 //---58--immediately invoked function expressions IIFE---
-
+/*
 function game(){
     var score = Math.random() * 10;
     console.log(score >= 5);
@@ -170,8 +170,25 @@ game();
     var score = Math.random() * 10;
     console.log(score >= 5 - x);
 })(5);
+*/
 
-//---59---
+//---59---closures---
+
+function retirement(retirementAge) {
+    var a = 'some text here.';
+    return function(yearOfBirth){
+        var age = 2017 - yearOfBirth;
+        console.log((retirementAge - age) + a);
+    }
+}
+
+var retireUS = retirement(66);
+var retireDE = retirement(65);
+
+retireUS(1999);
+retireDE(1988);
+
+
 
 
 
