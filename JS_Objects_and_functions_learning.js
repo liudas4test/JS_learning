@@ -126,7 +126,7 @@ console.log(rate);
 */
 
 //---57--functions returning function--
-
+/*
 function interviewQuestion(job){
     if(job === 'worker'){
         return function(name){
@@ -151,5 +151,27 @@ var driverQuestion = interviewQuestion('driver');
 driverQuestion('XXX')('MB');
 workerQuestion('Mark');
 interviewQuestion('driver')('Micius')('Tractor');
+*/
+
+//---58--immediately invoked function expressions IIFE---
+
+function game(){
+    var score = Math.random() * 10;
+    console.log(score >= 5);
+}
+game();
+
+(function (){
+    var score = Math.random() * 10;
+    console.log(score >= 5);
+})();
+
+(function (x){
+    var score = Math.random() * 10;
+    console.log(score >= 5 - x);
+})(5);
+
+//---59---
+
 
 
