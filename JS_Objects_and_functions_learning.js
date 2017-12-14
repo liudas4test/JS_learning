@@ -86,7 +86,7 @@ console.log(age);
 console.log(obj.city);*/
 
 //----56--functions passing as arguments
-
+/*
 var yers = [1990, 2000, 2010, 1991, 2015];
 function arrayCalc(arr, fn){
     var arrRes = [];
@@ -123,7 +123,33 @@ var rate = arrayCalc(ages,maxRate);
 console.log(ages);
 console.log(fullAges);
 console.log(rate);
+*/
 
+//---57--functions returning function--
 
+function interviewQuestion(job){
+    if(job === 'worker'){
+        return function(name){
+            console.log(name + 'What do you work?');
+        }
+    } else if (job === 'driver'){
+        return function(name){
+            return function(name2){
+                console.log(name + ' What do you drive? '+ name2);
+            }
+            
+        }
+    } else {
+        return function(name){
+            console.log('What do you do?');
+        }
+    }
+}
+
+var workerQuestion = interviewQuestion('worker');
+var driverQuestion = interviewQuestion('driver');
+driverQuestion('XXX')('MB');
+workerQuestion('Mark');
+interviewQuestion('driver')('Micius')('Tractor');
 
 
