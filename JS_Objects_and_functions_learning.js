@@ -51,7 +51,7 @@ var x = Object.create(personProto, {
 
 //-55---primitives vs. objects---
 //Primitives
-var a = 23;
+/*var a = 23;
 var b = a;
 a = 46;
 console.log(a);
@@ -83,6 +83,47 @@ function change(a,b){
 
 change(age, obj);
 console.log(age);
-console.log(obj.city);
+console.log(obj.city);*/
+
+//----56--functions passing as arguments
+
+var yers = [1990, 2000, 2010, 1991, 2015];
+function arrayCalc(arr, fn){
+    var arrRes = [];
+    for (var i = 0; i < arr.length; i++){
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+function calculateAge(el){
+    return 2017 - el;
+}
+
+function isFullAge(el){
+    return el >= 18;
+}
+
+function maxRate(el){
+    if(el >= 18)
+    {
+        return Math.round(206.9 - (0.67*el));
+    }
+    else
+    {
+        return -1;
+    }
+    
+}
+
+
+var ages = arrayCalc(yers,calculateAge);
+var fullAges = arrayCalc(ages, isFullAge);
+var rate = arrayCalc(ages,maxRate);
+console.log(ages);
+console.log(fullAges);
+console.log(rate);
+
+
 
 
