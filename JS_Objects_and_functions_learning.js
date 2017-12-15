@@ -220,7 +220,7 @@ personFriendly('morning');
 var person2Formal = person.presentation.bind(person2,'formal');
 person2Formal('night');
 */
-
+/*
 var years = [1990, 2000, 2010, 1991, 2015];
 function arrayCalc(arr, fn){
     var arrRes = [];
@@ -240,4 +240,76 @@ function isFullAge(limit, el){
 
 var ages = arrayCalc(years, calculateAge);
 var fullNZ = arrayCalc(ages, isFullAge.bind(this, 20));
-console.log(fullNZ);
+console.log(fullNZ);*/
+
+//-------------------Question game-----------------------------------------
+(function () {
+    function Question(question, answers, correct) {
+        this.question = question;
+        this.answers = answers;
+        this.correct = correct;
+    }
+
+    Question.prototype.displayQuestion = function () {
+        console.log(this.question);
+        for (var i = 0; i < this.answers.length; i++) {
+            console.log(i + ' ' + this.answers[i]);
+        }
+    }
+
+    Question.prototype.checkAnswer = function (ans, callback) {
+        var sc;
+        if (ans === this.correct) {
+            console.log('Corrent!');
+            sc = callback(true);
+        } else {
+            console.log('No. Try again...');
+            sc = callback(false);
+        }
+            this.displayScore(sc);
+    }
+
+        Question.prototype.displayScore = function(score){
+            console.log('Score is: ' + score);
+            console.log('---------------------------------')
+        }
+
+    var q1 = new Question('question 1 answ: Yes0', ['Yes', 'No'], 0);
+    var q2 = new Question('question 2 answ: No1', ['Yes', 'No'], 1);
+    var q3 = new Question('question 3 answ: About2', ['Yes', 'No', 'About'], 2);
+
+
+    var questions = [q1, q2, q3];
+
+    function score(){
+        var sc = 0;
+        return function(correct){
+            if(correct){
+                sc++;
+            }
+            return sc;
+        }
+    }
+
+    var keepScore = score();
+
+    function nextQuestion() {  
+
+        var n = Math.floor(Math.random() * questions.length);
+        console.log(n);
+
+        questions[n].displayQuestion();
+
+        var answer = prompt('Select answ:');
+
+        if (answer !== 'exit') {
+            questions[n].checkAnswer(parseInt(answer),keepScore);
+            nextQuestion();
+        }
+    }
+    nextQuestion();
+
+})();
+
+
+
