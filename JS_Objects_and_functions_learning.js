@@ -173,7 +173,7 @@ game();
 */
 
 //---59---closures---
-
+/*
 function retirement(retirementAge) {
     var a = 'some text here.';
     return function(yearOfBirth){
@@ -187,8 +187,57 @@ var retireDE = retirement(65);
 
 retireUS(1999);
 retireDE(1988);
+*/
 
+//---60--bind_call_apply---
+/*
+var person = {
+    name: 'Name1',
+    age: 99,
+    job: 'plumber',
+    presentation: function(style, timeOfDay){
+        if (style === 'formal'){
+            console.log('Ipsum lorum '+ timeOfDay +' lopon '+ this.name +' darum ipsum '+ this.age + this.job);
+        } else if (style === 'work') { 
+            console.log('Wipsum workum '+ timeOfDay +' wowon '+ this.name +' warum wipsum '+ this.age + this.job);
+        }
+    }
+}
 
+var person2 = {
+    name: 'Name2',
+    age: 88,
+    job: 'pilot'
+};
 
+person.presentation('formal','evening');
+person.presentation.call(person2,'work','morning');
 
+var personFriendly = person.presentation.bind(person,'work');
 
+personFriendly('morning');
+
+var person2Formal = person.presentation.bind(person2,'formal');
+person2Formal('night');
+*/
+
+var years = [1990, 2000, 2010, 1991, 2015];
+function arrayCalc(arr, fn){
+    var arrRes = [];
+    for (var i = 0; i < arr.length; i++){
+        arrRes.push(fn(arr[i]));
+    }
+    return arrRes;
+}
+
+function calculateAge(el){
+    return 2017 - el;
+}
+
+function isFullAge(limit, el){
+    return el >= limit;
+}
+
+var ages = arrayCalc(years, calculateAge);
+var fullNZ = arrayCalc(ages, isFullAge.bind(this, 20));
+console.log(fullNZ);
